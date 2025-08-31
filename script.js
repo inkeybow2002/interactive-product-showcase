@@ -25,4 +25,11 @@ function animate() { // Define the animate function to update the scene
     renderer.render(scene, camera); // Render the scene from the perspective of the camera
 }
 
+// Handle window resize event to adjust camera aspect ratio and renderer size
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight; // Update camera aspect ratio
+    camera.updateProjectionMatrix(); // Update the projection matrix
+    renderer.setSize(window.innerWidth, window.innerHeight); // Update the renderer size
+});
+
 animate(); // Start the animation loop
