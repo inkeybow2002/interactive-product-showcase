@@ -3,7 +3,13 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 const renderer = new THREE.WebGLRenderer(); // Create a WebGL renderer
 
 renderer.setSize(window.innerWidth, window.innerHeight); // Set the size of the renderer
-document.getElementById('model-viewer').appendChild(renderer.domElement); // Add the renderer's DOM element to the document
+
+const modelViewer = document.getElementById('model-viewer'); // Get the model-viewer element
+if (modelViewer) { // Check if the element exists
+    modelViewer.appendChild(renderer.domElement); // Add the renderer's DOM element to the document
+} else {
+    console.error("Model viewer element not found!"); // Log an error if the element is missing
+}
 
 const geometry = new THREE.BoxGeometry(); // Create a box geometry
 const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Create a basic material with green color
